@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h2>Model 2: Sentiment Classification</h2> <!-- insert category here -->
+
+  <div class="navbar">
+  <a href="/about">About</a>
+   {% for tab, label in main_tabs.items() %}
+      <a href="{{tab}}">{{label}}</a> <!-- set attribute and text here -->
+    
+  {% endfor %}
+  
+  </div>
+  <h4>Please leave a comment about your experience.</h4>
+  <form method="POST">
+    {{ template_form.hidden_tag() }}
+    <p>{{ template_form.comment.label }}
+    {{ template_form.comment(size=100) }}</p>
+    <p>{{ template_form.submit_comment() }}</p>       
+</form>
+
+<a class="redirect" href="/model_specification"><input type="button" value="Return to Model 1"></a>
+
+
+
+
+
+  {% endblock %}
