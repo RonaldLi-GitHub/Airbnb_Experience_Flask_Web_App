@@ -1,0 +1,77 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h2>Summary</h2> <!-- insert category here -->
+
+  <div class="navbar">
+  <a href="/about">About</a>
+   {% for tab, label in main_tabs.items() %}
+      <a href="{{tab}}">{{label}}</a> <!-- set attribute and text here -->
+    
+  {% endfor %}
+  </div> 
+
+<div>
+ 
+  <div class="class1">
+    {% if last_id_1 > 0 or last_id_2 > 0 %}
+    <h2>Your Input</h2>
+    {%  endif %}
+
+  {% if last_id_1 > 0 %}
+   <h4>Model 1: Prediction of Review Score</h4>
+  <p>Host Since: {{score_X[last_id_1]["host_since"]}}</p>
+  <p>Host Response Rate: {{score_X[last_id_1]["host_response_rate"]*100}}%</p>
+  <p>Latitude: {{score_X[last_id_1]["latitude"]}}</p>
+  <p>Longitude: {{score_X[last_id_1]["longitude"]}}</p>
+  <p>Accommodates: {{score_X[last_id_1]["accommodates"]}}</p>
+  <p>Bedrooms: {{score_X[last_id_1]["bedrooms"]}}</p>
+  <p>Price: ${{score_X[last_id_1]["price"]}} per day</p>
+  <p>Minimum Nights: {{score_X[last_id_1]["minimum_nights"]}} </p>
+  <p>Maximum Nights: {{score_X[last_id_1]["maximum_nights"]}}</p>
+  <p>Availability 30: {{score_X[last_id_1]["availability_30"]}} </p>
+  <p>Number of Reviews: {{score_X[last_id_1]["number_of_reviews"]}}</p>
+  <p>Host Response Time: {{score_X[last_id_1]["host_response_time"]}}</p>
+  <p>Host is Superhost: {{score_X[last_id_1]["host_is_superhost"]}}</p>
+  <p>Host's Identity is Verified: {{score_X[last_id_1]["host_identity_verified"]}}</p>
+  <p>Room Type: {{score_X[last_id_1]["room_type"]}}</p>
+  <p>Instant Bookable: {{score_X[last_id_1]["instant_bookable"]}}</p>
+   {%  endif %}
+
+   {% if last_id_2 > 0 %}
+   <h4>Model 2: Sentiment Classification</h4>
+   <p>Comment: {{entry[last_id_2]}}</p>
+   {%  endif %}
+  </div>
+  <div class="class2">
+    
+    {% if last_id_1 > 0 or last_id_2 > 0 %}
+    <h2>Model Output</h2>
+    {%  endif %}
+      {% if last_id_1 > 0 %}
+      <h4>Model 1: Prediction of Review Score</h4>
+      <p>Model predicts a review rating of <b>{{predictions_1[last_id_1]}}</b>.</p>
+      {%  endif %}
+
+      {% if last_id_2 > 0 %}
+      <h4>Model 2: Sentiment Classification</h4>
+      <p>Model predicts that your review comments are <b>{{predictions_2[last_id_2]}}.</b></p>
+      {%  endif %}
+  </div>
+  <div class="class3">
+    {% if last_id_1 > 0 and last_id_2 > 0 %}
+    <h2>Thank you for using this app.</h2>
+    <form method="POST">
+      {{ cancel_form.hidden_tag() }}
+      <p>{{ cancel_form.cancel() }}</p>       
+  </form>
+    {% endif %}
+    
+  </div>
+
+</div>
+
+
+
+
+  {% endblock %}
