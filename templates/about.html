@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{% block content %}
+<h2>About</h2> <!-- insert category here -->
+
+<div class="navbar">
+<a href="/about">About</a>
+ {% for tab, label in main_tabs.items() %}
+    <a href="{{tab}}">{{label}}</a> <!-- set attribute and text here -->
+  
+{% endfor %}
+
+</div>
+
+<p>Welcome, this web app serves to illustrate the application of machine learning to 
+(1) predict the average rating on a 0-5 numerical scale as a <br>measure of satisfaction 
+with the Airbnb experience and (2) classify the user's review comment as favorable or unfavorable.</p>
+
+<a class="redirect" href="/model_specification"><input type="button" value="Get Started"></a>
+
+{% endblock %}
