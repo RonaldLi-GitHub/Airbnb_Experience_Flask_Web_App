@@ -185,6 +185,5 @@ def about():
   return render_template("about.html", main_tabs=main_tabs)
 
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=PORT, debug=True)
+       app.run(debug=True)
 
