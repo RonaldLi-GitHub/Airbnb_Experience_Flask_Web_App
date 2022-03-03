@@ -1,4 +1,3 @@
-clipboard==0.0.4
 Flask==1.1.4
 Flask_Admin==1.6.0
 Flask_WTF==0.14.3
