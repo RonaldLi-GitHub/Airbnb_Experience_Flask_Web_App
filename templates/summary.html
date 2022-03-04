@@ -1,0 +1,78 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h2>Summary</h2> <!-- insert category here -->
+
+  <div class="navbar">
+  <a href="/about">About</a>
+   {% for tab, label in main_tabs.items() %}
+      <a href="{{tab}}">{{label}}</a> <!-- set attribute and text here -->
+    
+  {% endfor %}
+  </div> 
+
+<div>
+ 
+  <div class="class1">
+    
+    <h2>Your Input</h2>
+    
+
+  
+   <h4>Model 1: Prediction of Review Score</h4>
+  <p>Host Since: {{session['host_since']}}</p>
+  <p>Host Response Rate: {{session['host_response_rate']}}%</p>
+  <p>Host Listings Count: {{session['host_listings_count']}}</p>
+  <p>Latitude: {{session["latitude"]}}</p>
+  <p>Longitude: {{session["longitude"]}}</p>
+  <p>Accommodates: {{session["accommodates"]}}</p>
+  <p>Bedrooms: {{session["bedrooms"]}}</p>
+  <p>Price: ${{session["price"]}} per day</p>
+  <p>Minimum Nights: {{session["minimum_nights"]}} </p>
+  <p>Maximum Nights: {{session["maximum_nights"]}}</p>
+  <p>Availability 30: {{session["availability_30"]}} </p>
+  <p>Number of Reviews: {{session["number_of_reviews"]}}</p>
+  <p>Host Response Time: {{session["host_response_time"]}}</p>
+  <p>Host is Superhost: {{session["host_is_superhost"]}}</p>
+  <p>Host's Identity is Verified: {{session["host_identity_verified"]}}</p>
+  <p>Room Type: {{session["room_type"]}}</p>
+  <p>Instant Bookable: {{session["instant_bookable"]}}</p>
+   
+
+   
+   <h4>Model 2: Sentiment Classification</h4>
+   <p>Comment: {{session['reviews']}}</p>
+   
+  </div>
+  <div class="class2">
+    
+    
+    <h2>Model Output</h2>
+   
+     
+      <h4>Model 1: Prediction of Review Score</h4>
+      <p>Model predicts a review rating of <b>{{session['predictions_1']}}</b>.</p>
+     
+
+      
+      <h4>Model 2: Sentiment Classification</h4>
+      <p>Model predicts that your review comments are <b>{{session['predictions_2']}}.</b></p>
+      
+  </div>
+  <div class="class3">
+   
+    <h2>Thank you for using this app.</h2>
+    <form method="POST">
+      {{ cancel_form.hidden_tag() }}
+      <p>{{ cancel_form.cancel() }}</p>       
+  </form>
+    
+    
+  </div>
+
+</div>
+
+
+
+
+  {% endblock %}
