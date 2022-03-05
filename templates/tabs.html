@@ -1,0 +1,144 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h2>Model 1: Prediction of Review Score</h2> 
+
+  <div class="navbar">
+  <a href="/about">About</a>
+   {% for tab, label in main_tabs.items() %}
+      <a href="{{tab}}">{{label}}</a> 
+    
+  {% endfor %}
+  
+  </div>
+
+
+
+  <div style="width: 100%; display: table;">
+    <div style="display: table-row; height: 100px;">
+    <div style="width: 50%; display: table-cell;"> 
+     <div>
+    <form action="/model_specification" method="POST" novalidate>
+      {{ template_form.hidden_tag() }}
+     <p>{{ template_form.host_since.label }}
+      {{ template_form.host_since(class_='datepicker') }}
+     </p> 
+     <ul>{% for error in template_form.host_since.errors %}   
+        <li style="color:red;">{{error}}</li>
+      {% endfor %}
+     </ul>
+     <p>{{ template_form.host_response_rate.label }}
+      {{ template_form.host_response_rate(size=5) }} <i>Please enter the percentage without percent sign, for example, enter 25 to denote 25%</i>
+     </p>
+     <ul>{% for error in template_form.host_response_rate.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.host_listings_count.label }}
+      {{ template_form.host_listings_count(size=5) }}
+     </p>
+     <ul>{% for error in template_form.host_listings_count.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.latitude.label }}
+      {{ template_form.latitude(size=7) }} <i>Please use the map on the right to click on a location and find the latitude in the pop-up window -></i>
+     </p>
+     <ul>{% for error in template_form.latitude.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.longitude.label }}
+      {{ template_form.longitude(size=7) }} <i>Please use the map on the right to click on a location and find the longitude in the pop-up window -></i>
+     </p>
+     <ul>{% for error in template_form.longitude.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.accommodates.label }}
+      {{ template_form.accommodates(size=5) }} <i>This is the maximum capacity of the listing</i>
+     </p>
+     <ul>{% for error in template_form.accommodates.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+
+     <p>{{ template_form.bedrooms.label }}
+      {{ template_form.bedrooms(size=5) }} <i>This is the number of bedrooms</i>
+     </p>
+     <ul>{% for error in template_form.bedrooms.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+
+     <p>{{ template_form.price.label }}
+      {{ template_form.price(size=5) }} <i>Please enter the daily price without dollar sign</i>
+     </p>
+     <ul>{% for error in template_form.price.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.minimum_nights.label }}
+      {{ template_form.minimum_nights(size=5) }} <i>This is the minimum number of night stay for the listing </i>
+     </p>
+     <ul>{% for error in template_form.minimum_nights.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+  <p>{{ template_form.maximum_nights.label }}
+      {{ template_form.maximum_nights(size=5) }} <i>This is the maximum number of night stay for the listing</i>
+     </p>
+     <ul>{% for error in template_form.maximum_nights.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.availability_30.label }}
+      {{ template_form.availability_30(size=5) }} <i>This is the availability of the listing 30 days in the future as determined by the calendar (an interger between 0 and 30)</i>
+     </p>
+     <ul>{% for error in template_form.availability_30.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.number_of_reviews.label }}
+      {{ template_form.number_of_reviews(size=5) }}
+     </p>
+     <ul>{% for error in template_form.number_of_reviews.errors %}   
+      <li style="color:red;">{{error}}</li>
+    {% endfor %}
+   </ul>
+     <p>{{ template_form.host_response_time.label }}
+      {{ template_form.host_response_time() }}
+     </p>
+     <p>{{ template_form.host_is_superhost.label }}
+      {{ template_form.host_is_superhost() }}
+     </p>
+     <p>{{ template_form.host_identity_verified.label }}
+      {{ template_form.host_identity_verified() }}
+     </p>
+     <p>{{ template_form.room_type.label }}
+      {{ template_form.room_type() }}
+     </p>
+     <p>{{ template_form.instant_bookable.label }}
+      {{ template_form.instant_bookable() }} <i>Whether the guest can automatically book the listing without the host requiring to accept their booking request</i>
+     </p>
+     <p>{{ template_form.submit() }}
+     </p>
+
+
+    </form>
+</div>
+</div>
+
+<div style="display: table-cell;"> 
+  <div>
+      <h4>Please use the map to locate latitude and longitude by clicking on a location</h4>
+      <iframe class="map", src="/map" width="600" height="600"></iframe>
+    </div>   
+  
+  </div> 
+</div>
+</div>
+
+
+
+{% endblock %}
