@@ -10,7 +10,9 @@ The goal of the project is to push machine learning models to production. I use 
 Please check out the app at https://airbnb-experience-ml.herokuapp.com/
 
 * Here are some screenshots
-
+![](img/img_1.JPG)
+![](img/img_2.JPG)
+![](img/img_3.JPG)
 
 **Model 1: Predicting Review Score**
 ---
