@@ -2,7 +2,7 @@
 
 **Summary**
 ---
-In this project, I attempt to build a Flask web app to demonstrate the use of (1) a Ridge regression to predict the review rating of the Airbnb experience and (2) a neural network to classify the sentiment of the reviewer’s written comment about the Airbnb experience. The model output is reflective of San Diego, CA because the training data used in building the models is Airbnb’s public data on the San Diego region.
+In this project I attempt to build a Flask web app to demonstrate the use of (1) a Ridge regression to predict the review rating of the Airbnb experience and (2) a neural network to classify the sentiment of the reviewer’s written comment about the Airbnb experience. The model output is reflective of San Diego, CA because the training data used in building the models is Airbnb’s public data on the San Diego region.
 The goal of the project is to push machine learning models to production. I use the Flask framework to create a web app that lets the user input all required fields and see model output immediately after.
 
 **Flask App Deployed to Heroku**
