@@ -5,6 +5,13 @@
 In this project, I attempt to build a Flask web app to demonstrate the use of (1) a Ridge regression to predict the review rating of the Airbnb experience and (2) a neural network to classify the sentiment of the reviewer’s written comment about the Airbnb experience. The model output is reflective of San Diego, CA because the training data used in building the models is Airbnb’s public data on the San Diego region.
 The goal of the project is to push machine learning models to production. I use the Flask framework to create a web app that lets the user input all required fields and see model output immediately after.
 
+**Flask App Deployed to Heroku**
+---
+Please check out the app at https://airbnb-experience-ml.herokuapp.com/
+
+* Here are some screenshots
+
+
 **Model 1: Predicting Review Score**
 ---
 
@@ -53,10 +60,17 @@ As a complement to Model 1, Model 2 attempts to classify the Airbnb experience a
 *Modeling*
 *	The data is split into 70% training and 30% testing
 *	A tokenizer is created using the top 50,000 most common words
-*	I set up the neural network. Bidirectional LSTM is particularly useful when the order of words has an impact on the overall tone of the sentences. Drop out layer also helps in reducing overfitting.
+*	I set up the neural network. Bidirectional LSTM is particularly useful when the order of words has an impact on the overall tone of the sentences. Drop out layer also helps in reducing overfitting
 *	After 3 epochs, the model reaches 82% accuracy on the testing data. Further epochs will see a drop on validation accuracy. Thus the model finishes training after 3 epochs
 
 **Flask App Development**
 ---
 
+I use the Flask framework to deploy Model 1 and Model 2 to the web.
+
+* [app.py](https://github.com/RonaldLi-GitHub/Airbnb_Experience_Flask_Web_App/blob/main/app.py) refers to the logic that connects user input to model output. The code details how the app takes user input, runs Model 1 and Model 2 and displays the final result
+* [forms.py](https://github.com/RonaldLi-GitHub/Airbnb_Experience_Flask_Web_App/blob/main/forms.py) refers to the Flask forms. Validation is enforced to many of the user input fields to ensure that the input numbers/dates are reasonable.
+* [map.py](https://github.com/RonaldLi-GitHub/Airbnb_Experience_Flask_Web_App/blob/main/map.py) refers to the folium map used in the app that allows the user to select longitude and latitude
+* [templates](https://github.com/RonaldLi-GitHub/Airbnb_Experience_Flask_Web_App/tree/main/templates) contains the HTML files 
+* [static](https://github.com/RonaldLi-GitHub/Airbnb_Experience_Flask_Web_App/tree/main/static) contains the CSS file
 
